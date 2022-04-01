@@ -1,7 +1,6 @@
-/* Default to border-box and disable background repeat */
+/* Default to border-box */
 *, *::before, *::after {
   box-sizing: border-box;
-  background-repeat: no-repeat;
 }
 
 /* Remove default margin and padding */
@@ -10,38 +9,48 @@
   padding: 0;
 }
 
-/* The <body> element will always fill the viewport, even when empty */
-body {
-  min-height: 100vh;
-}
-
-/* Change the line height and use the system default UI font */
-html {
-  line-height: 1.5;
-  font-family:
+/* Define custom properties for UI and monospace system font stacks */
+:root {
+  --system-font-stack:
     system-ui,
     /* macOS 10.11-10.12 */ -apple-system,
     /* Windows 6+ */ "Segoe UI",
-    /* Android 4+ */ "Roboto",
-    /* Ubuntu 10.10+ */ "Ubuntu",
-    /* Gnome 3+ */ "Cantarell",
+    /* Android 4+ */ Roboto,
+    /* Ubuntu 10.10+ */ Ubuntu,
+    /* Gnome 3+ */ Cantarell,
     /* KDE Plasma 5+ */ "Noto Sans",
-    /* fallback */ sans-serif;
-}
+    /* fallback */ sans-serif,
+    /* macOS emoji */ "Apple Color Emoji",
+    /* Windows emoji */ "Segoe UI Emoji",
+    /* Windows emoji */ "Segoe UI Symbol",
+    /* Linux emoji */ "Noto Color Emoji";
 
-/* Use 4-space tabs and system default monospace font for code and pre-formatted text */
-code, kbd, pre, samp {
-  tab-size: 4;
-  font-family:
+  --system-font-stack-mono:
     ui-monospace,
-    /* macOS 10.10+ */ "Menlo",
-    /* Windows 6+ */ "Consolas",
+    /* macOS 10.10+ */ Menlo,
+    /* Windows 6+ */ Consolas,
     /* Android 4+ */ "Roboto Mono",
     /* Ubuntu 10.10+ */ "Ubuntu Monospace",
     /* KDE Plasma 5+ */ "Noto Mono",
     /* KDE Plasma 4+ */ "Oxygen Mono",
     /* Linux/OpenOffice fallback */ "Liberation Mono",
-    /* fallback */ monospace;
+    /* fallback */ monospace,
+    /* macOS emoji */ "Apple Color Emoji",
+    /* Windows emoji */ "Segoe UI Emoji",
+    /* Windows emoji */ "Segoe UI Symbol",
+    /* Linux emoji */ "Noto Color Emoji";
+}
+
+/* Change the line height and use the system UI font stack */
+html {
+  line-height: 1.5;
+  font-family: var(--system-font-stack);
+}
+
+/* Use 4-space tabs and system monospace font stack for code and pre-formatted text */
+code, kbd, pre, samp {
+  tab-size: 4;
+  font-family: var(--system-font-stack-mono);
 }
 
 /* Remove default marker style for navigation lists */
